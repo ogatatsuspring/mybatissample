@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatissample.mapper.BookMapper">
+
+  <select id="getAllBooks" resultType="com.example.mybatissample.entity.Book">
+    select id, title, author from books order by id
+  </select>
+  
+  <select id="getBookById" resultType="com.example.mybatissample.entity.Book">
+    select id, title, author from books where id = #{id}
+  </select>
+  
+  <insert id="insertBook" parameterType="com.example.mybatissample.entity.Book">
+    insert into books( title, author ) values( #{title}, #{author} )
+  </insert>
+  
+  <update id="updateBook" parameterType="com.example.mybatissample.entity.Book">
+    update books set title = #{title}, author = #{author} where id = #{id}
+  </update>
+  
+  <delete id="deleteBookById" parameterType="int">
+    delete books where id = #{id}
+  </delete>
+  
+</mapper>
