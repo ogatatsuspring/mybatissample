@@ -11,8 +11,8 @@ public interface BookMapper {
   
   List<Book> getAllBooks();
   Book getBookById( int id );
-  void insertBook( Book book );
-  void updateBook( Book book );
-  void deleteBookById( int id );
+  int insertBook( Book book );
+  int updateBook( Book book );
+  int deleteBookById( int id );
   
 }

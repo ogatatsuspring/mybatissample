@@ -3,8 +3,8 @@ package com.example.mybatissample.entity;
 import lombok.Data;
 
 @Data
-public class Book {
+public class Review {
   private int id;
-  private String title;
-  private String author;
+  private int bookId;
+  private String reviewText;
 }

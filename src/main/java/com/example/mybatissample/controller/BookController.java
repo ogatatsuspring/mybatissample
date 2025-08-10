@@ -43,8 +43,11 @@ public class BookController {
     Book book = new Book();
     book.setTitle( "クラウド技術を学ぶ" );
     book.setAuthor( "山田太郎" );
-    bookMapper.insertBook( book );
-    model.addAttribute( "message", "登録成功" );
+    if ( bookMapper.insertBook( book ) == 1 ) {
+      model.addAttribute( "message", "登録成功" );
+    } else {
+      model.addAttribute( "message", "登録失敗" );
+    }
     return "book/success";
   }
   
@@ -54,15 +57,21 @@ public class BookController {
     book.setId( id );
     book.setTitle( "更新されたタイトル" );
     book.setAuthor( "更新太郎" );
-    bookMapper.updateBook( book );
-    model.addAttribute( "message", "更新成功" );
+    if ( bookMapper.updateBook( book ) == 1 ) {
+      model.addAttribute( "message", "更新成功" );
+    } else {
+      model.addAttribute( "message", "更新失敗" );
+    }
     return "book/success";
   }
   
   @GetMapping( "/delete/{id}" )
   public String deleteBook( @PathVariable int id, Model model ) {
-    bookMapper.deleteBookById( id );
-    model.addAttribute( "message", "削除成功" );
+    if ( bookMapper.deleteBookById( id ) == 1 ) {
+      model.addAttribute( "message", "削除成功" );
+    } else {
+      model.addAttribute( "message", "削除失敗" );
+    }
     return "book/success";
   }
 
